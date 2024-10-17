@@ -11,7 +11,7 @@ window.title('DoggyDogs')
 label = Label(window)
 label.pack()
 
-btn = Button(window, text ='Get_a_DoggyDog')
+btn = Button(window, text ='Get_a_Dog_of_your_Dream')
 btn.pack()
 
 window.mainloop()
