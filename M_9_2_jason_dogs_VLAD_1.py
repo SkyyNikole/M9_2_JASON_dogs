@@ -8,7 +8,14 @@ from io import BytesIO
 def image_dogs_in_tk():
     url_image = get_json_dog()
 #_4_присваиваем адрес переменной url_image
-
+    if url_image:
+        answer_img = r.get(url_image)
+        img = BytesIO(answer_img.content)
+        img_for_tk = Image.open(img)
+        img_for_tk.thumbnail((500,350))
+        img_tk = ImageTk.PhotoImage(img_for_tk)
+        label.config(image=img_tk)
+        label.image = img_tk
 
 def get_json_dog():
     api_answer = r.get('https://dog.ceo/api/breeds/image/random')
@@ -25,7 +32,7 @@ window.title('DoggyDogs')
 
 
 label = Label(window)
-label.pack()
+label.pack(pady = (0,10))
 
 btn = Button(window, text ='Get_a_Dog_of_your_Dream', command = image_dogs_in_tk)
 btn.pack()
