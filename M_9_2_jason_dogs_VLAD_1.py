@@ -6,6 +6,7 @@ from io import BytesIO
 
 
 def progress_bar_function():
+    progress_bar
 
 
 def image_dogs_in_tk():
