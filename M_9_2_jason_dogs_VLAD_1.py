@@ -5,6 +5,9 @@ from PIL import Image, ImageTk
 from io import BytesIO
 
 
+def progress_bar_function():
+
+
 def image_dogs_in_tk():
     url_image = get_json_dog()
 #_4_присваиваем адрес переменной url_image
@@ -28,15 +31,18 @@ def get_json_dog():
 #_3_возвращаем на функцию адрес - значение по ключу message
 
 window = Tk()
-window.geometry('500x400')
+window.geometry('500x450')
 window.title('DoggyDogs')
 
 
-label = Label(window)
+label = ttk.Label(window)
 label.pack(pady = (0,10))
 
-btn = Button(window, text ='Get_a_Dog_of_your_Dream', command = image_dogs_in_tk)
-btn.pack()
+btn = ttk.Button(window, text ='Get_a_Dog_of_your_Dream', command = image_dogs_in_tk)
+btn.pack(pady = (0,10))
+
+progress_bar = ttk.Progressbar(window, mode = 'determinate', length = 400)
+progress_bar.pack()
 
 window.mainloop()
 
