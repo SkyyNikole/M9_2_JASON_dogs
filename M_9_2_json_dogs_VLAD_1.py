@@ -6,7 +6,9 @@ from io import BytesIO
 
 
 def progress_bar_function():
-    progress_bar
+    progress_bar.config(value = 0)
+    progress_bar.start(25)
+    window.after(3000, image_dogs_in_tk)
 
 
 def image_dogs_in_tk():
@@ -20,6 +22,7 @@ def image_dogs_in_tk():
         img_tk = ImageTk.PhotoImage(img_for_tk)
         label.config(image=img_tk)
         label.image = img_tk
+    progress_bar.stop()
 
 
 def get_json_dog():
@@ -39,8 +42,10 @@ window.title('DoggyDogs')
 label = ttk.Label(window)
 label.pack(pady = (0,10))
 
-btn = ttk.Button(window, text ='Get_a_Dog_of_your_Dream', command = image_dogs_in_tk)
+btn = ttk.Button(window, text ='Get_a_Dog_of_your_Dream', command = progress_bar_function)
 btn.pack(pady = (0,10))
+#_5 изменяем функцию в command кнопки с image_dogs_in_tk на
+#_progress_bar_function после создания ниже progress_bar
 
 progress_bar = ttk.Progressbar(window, mode = 'determinate', length = 400)
 progress_bar.pack()
