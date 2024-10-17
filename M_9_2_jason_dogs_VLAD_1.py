@@ -17,6 +17,7 @@ def image_dogs_in_tk():
         label.config(image=img_tk)
         label.image = img_tk
 
+
 def get_json_dog():
     api_answer = r.get('https://dog.ceo/api/breeds/image/random')
     json_dog = api_answer.json()
