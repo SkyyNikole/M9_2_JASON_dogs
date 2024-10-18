@@ -49,8 +49,9 @@ def show_dog_image():
             new_window = Toplevel(window)
             new_window.title('Carpe_Diem_Dog')
             new_window.iconbitmap('dog.ico')
-            new_win_label = ttk.Label(new_window)
+            new_win_label = ttk.Label(new_window, image=img)
             new_win_label.pack()
+            new_win_label.image = img
 # помещали в label window (ниже коммент), a теперь в new_win_label (выше)
             #label.config(image=img)
             #label.image=img
