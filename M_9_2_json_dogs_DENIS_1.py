@@ -47,6 +47,13 @@ def show_dog_image():
             label.image=img
         except Exception as e:
                 mb.showerror('Error!', f'Image loading error: {e}.')
+    prog_bar.stop()
+
+def progress_bar_funct():
+    prog_bar['value'] = 0.0
+    prog_bar.start(30)
+#3_один раз в 30 мл сек увелич
+    window.after(3000, show_dog_image)
 
 window = Tk()
 window.title('Lovely_Doggies')
@@ -56,9 +63,10 @@ window.iconbitmap('dog.ico')
 label = ttk.Label(window)
 label.pack(pady=10)
 
-btn = ttk.Button(window, text ='GetA_New_Doggie', command = show_dog_image)
+btn = ttk.Button(window, text ='GetA_New_Doggie', command = progress_bar_funct)
 btn.pack(pady=10)
 
+#_2_mode determinate - меняется в зависимости от value, уставн в функц выше
 prog_bar = ttk.Progressbar(mode = 'determinate', length=300)
 prog_bar.pack()
 
