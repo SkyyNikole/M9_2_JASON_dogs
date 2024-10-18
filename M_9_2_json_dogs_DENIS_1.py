@@ -40,11 +40,20 @@ def show_dog_image():
 # в двоичном коде изобр в img_data
             img = Image.open(img_data)
 #_1.4_обрабатываем изобр с пом pillow
-            img.thumbnail((300, 300))
+            img_size_from_spinbox = (int(width_sp.get()), int(height_sp.get()))
+            img.thumbnail(img_size_from_spinbox)
+#_4_1_вместо img.thumbnail((300, 300)) устанавливаем размер spb,
+#_получаем .get(), string преобр в int
             img = ImageTk.PhotoImage(img)
-#_1.5_обрабатываем для tkinter
-            label.config(image=img)
-            label.image=img
+# _1.5_обрабатываем для tkinter
+            new_window = Toplevel(window)
+            new_window.title('Carpe_Diem_Dog')
+            new_window.iconbitmap('dog.ico')
+            new_win_label = ttk.Label(new_window)
+            new_win_label.pack()
+# помещали в label window (ниже коммент), a теперь в new_win_label (выше)
+            #label.config(image=img)
+            #label.image=img
         except Exception as e:
                 mb.showerror('Error!', f'Image loading error: {e}.')
     prog_bar.stop()
@@ -67,7 +76,18 @@ btn = ttk.Button(window, text ='GetA_New_Doggie', command = progress_bar_funct)
 btn.pack(pady=10)
 
 #_2_mode determinate - меняется в зависимости от value, уставн в функц выше
-prog_bar = ttk.Progressbar(mode = 'determinate', length=300)
+prog_bar = ttk.Progressbar(window, mode = 'determinate', length=300)
 prog_bar.pack()
+
+#_4 и см 4.1 выше
+width_l_spb = ttk.Label(window, text = 'Width')
+width_l_spb.pack(side='left', padx=(10,0))
+width_sp = ttk.Spinbox(from_=200, to=500, increment=50, width=5)
+width_sp.pack(side='left', padx=(0,10))
+
+height_l_spb = ttk.Label(window, text = 'Height')
+height_l_spb.pack(side='left', padx=(10,0))
+height_sp = ttk.Spinbox(from_=200, to=500, increment=50, width=5)
+height_sp.pack(side='left', padx=(0,10))
 
 window.mainloop()
