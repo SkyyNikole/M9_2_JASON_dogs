@@ -15,6 +15,9 @@ def get_dog_image():
         respond_json.raise_for_status()
 #_2.2_узнали статус, если ок = code 200, если 404 - page not found
         data = respond_json.json()
+        #_print(data)
+        #_print(data['message'])
+        #_print(data['status'])
 #_2.3_получили ответ в формате json и ниже возращаем https - значение ключа
         return data ['message']
     except Exception as e:
@@ -89,11 +92,13 @@ width_l_spb = ttk.Label(window, text = 'Width')
 width_l_spb.pack(side='left', padx=(10,0))
 width_sp = ttk.Spinbox(from_=200, to=500, increment=50, width=5)
 width_sp.pack(side='left', padx=(0,10))
+width_sp.set(250)
 
 height_l_spb = ttk.Label(window, text = 'Height')
 height_l_spb.pack(side='left', padx=(10,0))
 height_sp = ttk.Spinbox(from_=200, to=500, increment=50, width=5)
 height_sp.pack(side='left', padx=(0,10))
+height_sp.set(250)
 
 #_5_создаем виджет notebook_картинки в закладках
 toplevel_window = Toplevel(window)
