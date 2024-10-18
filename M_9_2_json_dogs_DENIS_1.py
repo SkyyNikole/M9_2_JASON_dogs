@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import ttk
 import requests as r
 from PIL import Image, ImageTk
 from io import BytesIO
@@ -50,11 +51,15 @@ def show_dog_image():
 window = Tk()
 window.title('Lovely_Doggies')
 window.geometry('360x420')
+window.iconbitmap('dog.ico')
 
-label = Label(window)
+label = ttk.Label(window)
 label.pack(pady=10)
 
-btn = Button(window, text ='Get_new_doggie', command = show_dog_image)
+btn = ttk.Button(window, text ='GetA_New_Doggie', command = show_dog_image)
 btn.pack(pady=10)
+
+prog_bar = ttk.Progressbar(mode = 'determinate', length=300)
+prog_bar.pack()
 
 window.mainloop()
