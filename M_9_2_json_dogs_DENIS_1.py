@@ -5,7 +5,7 @@ from io import BytesIO
 from tkinter import messagebox as mb
 
 
-#_2_функция для получения изображения,
+#_2_функция загрузки ссылки на изображения,
 #_будем по ссылке обращаться к сайту dog.ceo
 def get_dog_image():
     try:
@@ -15,7 +15,7 @@ def get_dog_image():
 #_2.2_узнали статус, если ок = code 200, если 404 - page not found
         data = respond_json.json()
 #_2.3_получили ответ в формате json и ниже возращаем https - значение ключа
-        return data('message')
+        return data ['message']
     except Exception as e:
         mb.showerror('Error!', f'API request error : {e}.')
         return None
