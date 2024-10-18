@@ -17,7 +17,7 @@ def get_dog_image():
 #_2.3_получили ответ в формате json и ниже возращаем https - значение ключа
         return data('message')
     except Exception as e:
-        mb.showerror('Error!', 'API request error : {e}.')
+        mb.showerror('Error!', f'API request error : {e}.')
         return None
 #_если ошибка, то возвращаем None - пустоту
 
@@ -40,10 +40,12 @@ def show_dog_image():
             img = Image.open(img_data)
 #_1.4_обрабатываем изобр с пом pillow
             img.thumbnail((300, 300))
+            img = ImageTk.PhotoImage(img)
+#_1.5_обрабатываем для tkinter
             label.config(image=img)
             label.image=img
         except Exception as e:
-                mb.showerror('Error!', 'Image loading error: {e}.')
+                mb.showerror('Error!', f'Image loading error: {e}.')
 
 window = Tk()
 window.title('Lovely_Doggies')
