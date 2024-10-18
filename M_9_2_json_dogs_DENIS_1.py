@@ -46,11 +46,15 @@ def show_dog_image():
 #_получаем .get(), string преобр в int
             img = ImageTk.PhotoImage(img)
 # _1.5_обрабатываем для tkinter
-            new_window = Toplevel(window)
-            new_window.title('Carpe_Diem_Dog')
-            new_window.iconbitmap('dog.ico')
-            new_win_label = ttk.Label(new_window, image=img)
-            new_win_label.pack()
+            #_new_window = Toplevel(window)
+            #_new_window.title('Carpe_Diem_Dog')
+#_5.1_изменили 2 строки выше на:
+            tab = ttk.Frame(notebook)
+            notebook.add(tab, text=f'Doggie {notebook.index('end') + 1}')
+            #_new_window.iconbitmap('dog.ico')
+            new_win_label = ttk.Label(tab, image=img)
+#_5.2_отправляем не в new_window, а в tab (раньше было new_window на месте tab выше)
+            new_win_label.pack(padx=10, pady=10)
             new_win_label.image = img
 # помещали в label window (ниже коммент), a теперь в new_win_label (выше)
             #label.config(image=img)
@@ -91,4 +95,10 @@ height_l_spb.pack(side='left', padx=(10,0))
 height_sp = ttk.Spinbox(from_=200, to=500, increment=50, width=5)
 height_sp.pack(side='left', padx=(0,10))
 
+#_5_создаем виджет notebook_картинки в закладках
+toplevel_window = Toplevel(window)
+toplevel_window.title('Dog_of_the_Day')
+notebook = ttk.Notebook(toplevel_window)
+notebook.pack(expand=True, fill='both', padx=10, pady=10)
+#_fill = both - растягивается и по x и по y
 window.mainloop()
